@@ -1,13 +1,23 @@
 import java.util.*;
 
 public class Main {
+   public static void main(String args[]) {
+    Scanner sc = new Scanner(System.in);
+    Inventory invObj = new Inventory();
+
+    while (true) {
+      System.out.println("PRESS 'q' TO QUIT \nWAITING FOR COMMAND : \n");
+      String input = sc.nextLine();
+      if (toQuit(input)) break;
+      chooseTask(input, invObj);
+    }
+  }
+  
    static void handleStock (Inventory invObj, String details) {
       int id = Integer.parseInt(details);
       int available = invObj.getQuantity(id);
-      if (available != -1)
-         System.out.println("\n" + invObj.productList.get(id).name + " - " + available + "\n");
-      else 
-        System.out.println("\nProduct unavailable\n".toUpperCase());
+      
+      System.out.println("\n" + invObj.productList.get(id).product.name + " - " + available + "\n");
    }
 
     static void handleInventory (Inventory invObj, String details) {
@@ -24,7 +34,7 @@ public class Main {
     String splitted[] = input.split("=>");
     String task = splitted[0].toUpperCase();
     String details = splitted[1];
-    
+
     switch (task) {
       case "INVENTORY":
         handleInventory(invObj, details);
@@ -47,17 +57,5 @@ public class Main {
   static boolean toQuit(String input) {
     if (input.equals("q")) return true;
     return false;
-  }
-
-  public static void main(String args[]) {
-    Scanner sc = new Scanner(System.in);
-    Inventory invObj = new Inventory();
-
-    while (true) {
-      System.out.println("PRESS 'q' TO QUIT \nWAITING FOR COMMAND : \n");
-      String input = sc.nextLine();
-      if (toQuit(input)) break;
-      chooseTask(input, invObj);
-    }
   }
 }

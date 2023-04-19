@@ -11,18 +11,18 @@ class ParseInput {
         return new Stock(new Product(name, id, price), count);
     }
 
-    static ArrayList<Sell> parseCommandLineSale(String input) {
+    static ArrayList<Order> parseCommandLineSale(String input) {
         String products[] = input.split(";");
-        ArrayList<Sell> productsToSell = new ArrayList<>();
+        ArrayList<Order> orders = new ArrayList<>();
         for (String eachProduct : products) {
             String eachSplitted[] = eachProduct.split("\\|");
-            productsToSell.add(
-                new Sell(
+            orders.add(
+                new Order(
                 Integer.parseInt(eachSplitted[0]),
                 Integer.parseInt(eachSplitted[1])
                 )
             );
         }
-        return productsToSell;
+        return orders;
     }
 }
