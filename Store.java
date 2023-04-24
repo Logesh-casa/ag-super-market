@@ -1,10 +1,10 @@
 import java.util.*;
 
-class Sale { 
+class Store { 
    Inventory invObj;
 
-    Sale (Inventory i) {
-        invObj = i;
+    Store () {
+      invObj = new Inventory();
     }
 
   void sell(ArrayList<Order> orders) {
@@ -35,5 +35,17 @@ class Sale {
 
   boolean checkAvailability(Order p) {
     return p.requiredQuantity > invObj.getQuantity(p.productId) ? false : true;
+  }
+
+  String getName (int id) {
+   return invObj.productList.get(id).product.name;
+  }
+
+  void addProduct (Stock stock) {
+    invObj.addProduct(stock);
+  }
+
+  int getQuantity(int id) {
+    return invObj.getQuantity(id);
   }
 }

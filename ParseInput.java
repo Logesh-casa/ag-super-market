@@ -18,8 +18,8 @@ class ParseInput {
             String eachSplitted[] = eachProduct.split("\\|");
             orders.add(
                 new Order(
-                Integer.parseInt(eachSplitted[0]),
-                Integer.parseInt(eachSplitted[1])
+                    Integer.parseInt(eachSplitted[0]),
+                    Integer.parseInt(eachSplitted[1])
                 )
             );
         }
